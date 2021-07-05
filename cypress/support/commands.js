@@ -23,6 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+let LOCAL_STORAGE_MEMORY = {};
+
+Cypress.Commands.add("saveLocalStorage", () => {
+    Object.keys(localStorage).forEach(key => {
+        LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+    });
+});
+
+Cypress.Commands.add("restoreLocalStorage", () => {
+    Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+        localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+    });
+});
+
 Cypress.Commands.add('testNameField',(selector, text) =>{
     cy.get(selector)
     .as('someSel')
@@ -30,4 +44,3 @@ Cypress.Commands.add('testNameField',(selector, text) =>{
     .should('have.value',text);
     cy.get('@someSel').clear();
 })
-

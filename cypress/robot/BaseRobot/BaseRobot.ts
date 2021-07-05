@@ -211,7 +211,7 @@ export class BaseDependencies {
   }
 
   accessUrl(url: string) {
-    cy.visit(`${url}`);
+    cy.visit(`${url}`,{timeout:20000});
     return this;
   }
 
