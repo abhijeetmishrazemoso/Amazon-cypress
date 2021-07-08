@@ -25,7 +25,7 @@ export class AmazonHands extends BaseHands {
  ifSizePresentSelSizeAddToCart(){
      cy.get('body').then((container)=>{
         if(container
-        .find('#native_dropdown_selected_size_name').length !==0 ){
+        .find('div.a-section.a-spacing-small.a-text-center strong').length !==0 ){
             container
             .find('#native_dropdown_selected_size_name')
             .children(':nth-child(2)').attr('selected','selected');
