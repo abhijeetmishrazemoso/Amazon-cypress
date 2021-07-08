@@ -23,12 +23,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-
-Cypress.Commands.add('testNameField',(selector, text) =>{
-    cy.get(selector)
-    .as('someSel')
-    .type(text)
-    .should('have.value',text);
-    cy.get('@someSel').clear();
-})

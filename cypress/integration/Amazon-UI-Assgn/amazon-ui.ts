@@ -1,4 +1,4 @@
-import { first } from "cypress/types/lodash";
+/// <reference types="cypress" />
 import { AmazonDependencies,AmazonEyes,AmazonHands } from "../../robot/AmazonRobots/amazon-robot";
 
 context('Some test',() =>{
@@ -7,13 +7,15 @@ context('Some test',() =>{
     const amazonHands = new AmazonHands();
 
     describe('Amazon testing workflows',() => {
-        beforeEach('Access & login',() => {
+        beforeEach('Access & login', () => {
             amazonDependencies.accessUrl('http://www.amazon.in')
             amazonHands.login();
         })
+        
         let itemsOrdered:number = 0;
         
         it('Amazon Search',() => {
+            cy.wait(2000);
             amazonHands
             .typeTextonId('twotabsearchtextbox', 'Todays Deals{enter}')
             amazonHands.clickOnLinkImgDataIndexSelector('div',3);
@@ -98,10 +100,7 @@ context('Some test',() =>{
             .click();
             cy.get('select#orderFilter').select('2021', {force:true})
             .should('have.value','year-2021');
-            cy.get('#ordersContainer').contains('Track package')
-            .first().click()
-            // cy.get('div.a-box-group.a-spacing-base.order.js-order-card a')
-            // .first().click();
+            
             
         })
             

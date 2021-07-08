@@ -10,8 +10,9 @@ export class AmazonHands extends BaseHands {
  }
  login(){
      this.clickOnId('nav-link-accountList');
-     this.typeTextonId('ap_email','colouredpages@gmail.com{enter}');
-     this.typeTextonId('ap_password','R1dh!madhava{enter}');
+     this.typeTextonId('ap_email','');
+     this.typeTextonId('ap_password','');
+     cy.wait(400);
  }
  typeTextInInputWithName(name:string,text:string){
     cy.get(`input[name="${name}"]`)
