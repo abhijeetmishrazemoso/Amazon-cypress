@@ -10,9 +10,12 @@ export class AmazonHands extends BaseHands {
  }
  login(){
      this.clickOnId('nav-link-accountList');
-     this.typeTextonId('ap_email','');
+     this.typeTextonId('ap_email','colouredpages@gmail.com{enter}');
      this.typeTextonId('ap_password','');
      cy.wait(400);
+ }
+ getSynchronousCurrentCartCount():number{
+    return Number(Cypress.$('#nav-cart-count').text());
  }
  typeTextInInputWithName(name:string,text:string){
     cy.get(`input[name="${name}"]`)
@@ -24,11 +27,13 @@ export class AmazonHands extends BaseHands {
  }
  ifSizePresentSelSizeAddToCart(){
      cy.get('body').then((container)=>{
-        if(container
-        .find('div.a-section.a-spacing-small.a-text-center strong').length !==0 ){
-            container
-            .find('#native_dropdown_selected_size_name')
-            .children(':nth-child(2)').attr('selected','selected');
+        if(Cypress.
+         // $('div.a-section.a-spacing-small.a-text-center strong').length){
+         $('#native_dropdown_selected_size_name').length){
+            console.log("Entered jquery select size found")
+            Cypress.$
+            ('#native_dropdown_selected_size_name>option:eq(2)')
+            .prop('selected','selected');
         }
     }).then(() => {
         cy.wait(4000);

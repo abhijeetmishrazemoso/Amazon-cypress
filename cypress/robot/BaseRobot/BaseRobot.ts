@@ -7,6 +7,10 @@ export abstract class BaseEyes {
     cy.get(`#${id}`).should('have.text', text);
     return this;
   }
+  includesTextWithId(id: string, text: string) {
+    cy.get(`#${id}`).should('include.text', text);
+    return this;
+  }
 
   doesNotseesTextWithId(id: string, text: string) {
     cy.get(`#${id}`).should('not.have.text', text);
