@@ -22,7 +22,7 @@ describe("Visit URL and login",() => {
         cy.get("span.a-button-inner a").first().click()
         cy.get('div.ship-speed').contains('FREE with Prime').click()
             cy.get('input[type="submit"][value="Continue"]').first().click()
-            cy.wait(2000)
+            cy.wait(5000)
             cy.get('body').contains('Add Debit/Credit/ATM Card')
             .click()
             cy.get('body').contains('Add a credit or debit card')

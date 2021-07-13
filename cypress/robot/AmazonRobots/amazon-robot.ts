@@ -9,10 +9,18 @@ export class AmazonHands extends BaseHands {
      .click();
  }
  login(){
-     this.clickOnId('nav-link-accountList');
-     this.typeTextonId('ap_email','colouredpages@gmail.com{enter}');
-     this.typeTextonId('ap_password','');
-     cy.wait(400);
+    let email:string = '';
+    let passwordd:string = '';
+   cy.fixture("login-credentials.json").then((loginCredentials) => {
+      email = loginCredentials.email;
+      passwordd = loginCredentials.password;
+   }).then(() => {
+      this.clickOnId('nav-link-accountList');
+     this.typeTextonId('ap_email',email);
+     this.typeTextonId('ap_email','{enter}');
+     this.typeTextonId('ap_password',passwordd);
+     this.typeTextonId('ap_password','{enter}');
+   })
  }
  getSynchronousCurrentCartCount():number{
     return Number(Cypress.$('#nav-cart-count').text());
