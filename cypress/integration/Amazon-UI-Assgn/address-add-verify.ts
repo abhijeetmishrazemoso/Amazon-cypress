@@ -33,7 +33,6 @@ describe("Visit URL and login",() => {
             cy.get('[name="address-ui-widgets-addr-details-address-type-and-business-hours"]')
             .select("COM",{force:true})
             cy.get('#address-ui-widgets-form-submit-button input').click();
-            cy.wait(4000);
             amazonEyes.includesTextWithId('shippingOptionFormId', 'ZeMoSo Technologies')
         })
     
