@@ -18,13 +18,13 @@ stages {
 			steps	{
 
 
-					bat 'npm install typescript'
+					sh 'npm install typescript'
 
 
-					bat 'npm install cypress --save-dev'              
+					sh 'npm install cypress --save-dev'              
 
 
-					bat 'npm run cypress:run'
+					sh 'npm run cypress:run'
 
 
 				}
